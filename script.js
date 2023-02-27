@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 // Variables
 let todoItems = [];
@@ -9,12 +9,12 @@ const audio = new Audio("sound.wav");
 
 // Get todo list on first boot
 window.onload = () => {
-  let storageTodoItems = localStorage.getitem("todoItems");
+  let storageTodoItems = localStorage.getItem("todoItems");
   if (storageTodoItems !== null) {
     todoItems = JSON.parse(storageTodoItems);
   }
 
-  render;
+  render();
 };
 
 // Get the content typed into the input
@@ -44,6 +44,9 @@ function addTodo(text) {
 // Remove todo
 function removeTodo(id) {
   todoItems = todoItems.filter((todo) => todo.id !== Number(id));
+
+  audio.play();
+
   saveAndRender();
 }
 
@@ -63,7 +66,7 @@ function markAsCompleted(id) {
 }
 
 // Mark as uncomplted
-function markAsUncomplted(id) {
+function markAsUncompleted(id) {
   todoItems = todoItems.filter((todo) => {
     if (todo.id === Number(id)) {
       todo.completed = false;
@@ -79,7 +82,7 @@ function markAsUncomplted(id) {
 
 // Save in localstorage
 function save() {
-  localStorage.setItems("todoItems", JSON.stringify(todoItems));
+  localStorage.setItem("todoItems", JSON.stringify(todoItems));
 }
 
 // Render
@@ -95,7 +98,7 @@ function render() {
       uncompletedTodoDiv.append(createTodoElement(todo));
     });
   } else {
-    uncompletedTodoDiv.innerHTML = `<div class='empty'>No completed mission</div>`;
+    uncompletedTodoDiv.innerHTML = `<div class='empty'>No uncompleted mission</div>`;
   }
 
   if (completedTodos.length > 0) {
@@ -122,7 +125,7 @@ function createTodoElement(todo) {
 
   // Create todo item text
   const todoTextSpan = document.createElement("span");
-  todoTextSpan = innerHTML = todo.text;
+  todoTextSpan.innerHTML = todo.text;
 
   // Checkbox for list
   const todoInputCheckbox = document.createElement("input");
@@ -130,11 +133,11 @@ function createTodoElement(todo) {
   todoInputCheckbox.checked = todo.completed;
   todoInputCheckbox.onclick = (e) => {
     let id = e.target.closest(".todo-item").dataset.id;
-    e.target.checked ? markAsCompleted(id) : markAsUncomplted(id);
+    e.target.checked ? markAsCompleted(id) : markAsUncompleted(id);
   };
 
   // Delete button for list
-  const todoRemoveBtn = document.createElement(a);
+  const todoRemoveBtn = document.createElement("a");
   todoRemoveBtn.href = "#";
   todoRemoveBtn.innerHTML = `<svg
                               xmlns="http://www.w3.org/2000/svg"
