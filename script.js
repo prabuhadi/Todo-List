@@ -42,13 +42,40 @@ function addTodo(text) {
 }
 
 // Remove todo
-function removeTodo(id) {}
+function removeTodo(id) {
+  todoItems = todoItems.filter((todo) => todo.id !== Number(id));
+  saveAndRender();
+}
 
 // Mark as completed
-function markAsCompleted(id) {}
+function markAsCompleted(id) {
+  todoItems = todoItems.filter((todo) => {
+    if (todo.id === Number(id)) {
+      todo.completed = true;
+    }
+
+    return todo;
+  });
+
+  audio.play();
+
+  saveAndRender();
+}
 
 // Mark as uncomplted
-function markAsUncomplted(id) {}
+function markAsUncomplted(id) {
+  todoItems = todoItems.filter((todo) => {
+    if (todo.id === Number(id)) {
+      todo.completed = false;
+    }
+
+    return todo;
+  });
+
+  audio.play();
+
+  saveAndRender();
+}
 
 // Save in localstorage
 function save() {
