@@ -179,14 +179,10 @@ img {
   }
 }
 
-@media (max-width: 475px) {
+@media (max-width: 480px) {
   .app {
     width: 100vw;
     height: 100vh;
-  }
-
-  .app h1 {
-    font-size: 14px;
   }
 
   img {
