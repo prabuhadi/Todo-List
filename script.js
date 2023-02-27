@@ -19,7 +19,7 @@ window.onload = () => {
 
 // Get the content typed into the input
 todoInput.onkeyup = (e) => {
-  let value = e.target.value.replace(/^\s+/, ""); // string replace
+  let value = e.target.value.replace(/^\s+/, ""); // string replace, ^\s+ = one or more spaces
   if (value && e.keyCode === 13) {
     // Enter button
     addTodo(value);
