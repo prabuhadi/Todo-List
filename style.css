@@ -78,6 +78,12 @@ body {
   min-height: 100vh;
 }
 
+img {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 28px;
+}
+
 .app {
   color: #ffffffb0;
   background-color: #ffffff23;
@@ -158,4 +164,32 @@ body {
   font-size: 20px;
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  img {
+    width: 80%;
+  }
+  .app {
+    width: 100%;
+  }
+
+  .app h1 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 475px) {
+  .app {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .app h1 {
+    font-size: 14px;
+  }
+
+  img {
+    margin-top: 50%;
+  }
 }
